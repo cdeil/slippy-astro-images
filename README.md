@@ -4,7 +4,7 @@ Demos how to display astronomy images as slippy web maps.
 
 * Start from a single FITS image, extract header to text file and image as PNG.
 * Static web pages, can be hosted anywhere (no image server needed)
-* Wanted: pan, zoom, interactive marker and circle overlay, world coordinates, navigation search field
+* Wanted: pan, zoom, interactive marker and circle overlay, world coordinates, navigation search field, contours
 * Not the goal here: how to run image servers.
 
 TODO: make this a feature matrix and show which demo does what with checkboxes.

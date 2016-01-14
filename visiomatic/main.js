@@ -1,3 +1,8 @@
+var header_url = "https://raw.githubusercontent.com/cdeil/fermi-ts-maps/master/header.txt";
+var header;
+jQuery.get(header_url, function(data) {
+   header = data;
+});
 
 
 // var map = L.map('map', {crs = L.CRS.wcs(hdr)});
@@ -8,7 +13,8 @@ var map = L.map('map', {
   maxZoom: 4,
   center: [0, 0],
   zoom: 1,
-  crs: L.CRS.Simple
+  // crs: L.CRS.Simple
+  crs: L.CRS.wcs(header)
 });
 
 // dimensions of the image
@@ -28,12 +34,11 @@ L.imageOverlay(url, bounds).addTo(map);
 // tell leaflet that the map is exactly as big as the image
 map.setMaxBounds(bounds);
 
-// L.marker([-20, 500]).addTo(map)
-//     .bindPopup("Hello world!");
-//     // .openPopup();
-// 
-// var circle = L.circle(map.unproject([300, 10]), 10000, {
-//     color: 'green',
-//     fillColor: 'green',
-//     fillOpacity: 1
-// }).addTo(map);
+L.marker([200, 50]).addTo(map);
+L.marker(map.unproject([200, 50])).addTo(map);
+
+var circle = L.circle(map.unproject([300, 10]), 1000, {
+    color: 'green',
+    fillColor: 'green',
+    fillOpacity: 0.3
+}).addTo(map);
