@@ -1,5 +1,5 @@
 // create the slippy map
-var map = L.map('image-map', {
+var map = L.map('map', {
   minZoom: 1,
   maxZoom: 4,
   center: [0, 0],
@@ -8,9 +8,9 @@ var map = L.map('image-map', {
 });
 
 // dimensions of the image
-var w = 2000,
-    h = 1500,
-    url = 'http://kempe.net/images/newspaper-big.jpg';
+var w = 10001,
+    h = 401,
+    url = 'https://raw.githubusercontent.com/cdeil/fermi-ts-maps/master/emin_0030_emax_0100.png';
 
 // calculate the edges of the image, in coordinate space
 var southWest = map.unproject([0, h], map.getMaxZoom()-1);
