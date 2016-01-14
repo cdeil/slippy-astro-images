@@ -23,3 +23,7 @@ L.imageOverlay(url, bounds).addTo(map);
 
 // tell leaflet that the map is exactly as big as the image
 map.setMaxBounds(bounds);
+
+L.marker([-20, 500]).addTo(map)
+    .bindPopup("Hello world!")
+    // .openPopup();
