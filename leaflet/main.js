@@ -8,9 +8,9 @@ var map = L.map('map', {
 });
 
 // dimensions of the image
-var w = 10001,
-    h = 401,
-    url = 'https://raw.githubusercontent.com/cdeil/fermi-ts-maps/master/emin_0030_emax_0100.png';
+var w = 10001;
+var h = 401;
+var url = 'https://raw.githubusercontent.com/cdeil/fermi-ts-maps/master/emin_0030_emax_0100.png';
 
 // calculate the edges of the image, in coordinate space
 var southWest = map.unproject([0, h], map.getMaxZoom()-1);
@@ -25,5 +25,11 @@ L.imageOverlay(url, bounds).addTo(map);
 map.setMaxBounds(bounds);
 
 L.marker([-20, 500]).addTo(map)
-    .bindPopup("Hello world!")
+    .bindPopup("Hello world!");
     // .openPopup();
+
+var circle = L.circle(map.unproject([300, 10]), 10000, {
+    color: 'green',
+    fillColor: 'green',
+    fillOpacity: 1
+}).addTo(map);
