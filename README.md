@@ -32,7 +32,7 @@ Feature and pull requests welcome!
 
 ### Aladin Lite
 
-* Demo page: TODO, not implemented
+* [Demo page](http://cdeil.github.io/slippy-astro-images/aladin/demo1/)
 * Uses [Aladin Lite](http://aladin.u-strasbg.fr/AladinLite/)
 * A copy of the Aladin Lite code is available in [this GH repo](https://github.com/cdeil/AladinLite)
 
