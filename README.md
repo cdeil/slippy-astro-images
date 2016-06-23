@@ -28,7 +28,10 @@ Feature and pull requests welcome!
 * Uses: [Visiomatic](https://github.com/astromatic/visiomatic)
 * [Code](https://github.com/cdeil/slippy-astro-images/tree/gh-pages/visiomatic)
 
-### 
+### Threejs
+
+* [Demo page](http://cdeil.github.io/slippy-astro-images/threejs)
+* [Code](https://github.com/cdeil/slippy-astro-images/tree/gh-pages/threejs)
 
 ### Aladin Lite
 
