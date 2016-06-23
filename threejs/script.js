@@ -100,15 +100,15 @@ function render() {
   requestAnimationFrame(render);
 
 
-  var direction = camera.getWorldDirection();
-  var newDirection = new THREE.Euler();
-  camera.position.x = 0;
-  camera.position.z = 2;
-  newDirection._x = 0;
-  newDirection._z = 0;
-  camera.setRotationFromEuler(newDirection);
+  // var direction = camera.getWorldDirection();
+  // var newDirection = new THREE.Euler();
+  // camera.position.x = 0;
+  // camera.position.z = 2;
+  // newDirection._x = 0;
+  // newDirection._z = 0;
+  // camera.setRotationFromEuler(newDirection);
   controls.update();
-  
+
   renderer.render(scene, camera);
 
 }
