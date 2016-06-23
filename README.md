@@ -14,6 +14,8 @@ helps people get started and prepare input images (e.g. create tiles).
 
 Feature and pull requests welcome!
 
+If you have any questions, email [Christoph](https://github.com/cdeil) and  [Arjun](https://github.com/vorugantia).
+
 ## Demos
 
 ### Leaflet
