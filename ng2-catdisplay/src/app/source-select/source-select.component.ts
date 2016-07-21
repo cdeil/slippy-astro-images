@@ -10,12 +10,19 @@ import { CatalogService } from '../catalog.service';
 })
 export class SourceSelectComponent implements OnInit {
   sources: any;
+  source_id: number;
 
   constructor(catalogService: CatalogService) {   
       this.sources = catalogService.getCatalog();
+      this.source_id = 0;
   }
 
-  ngOnInit() {      
+  ngOnInit() {
+  }
+
+  onChange(newValue) {
+      this.source_id = newValue;
+      console.log('Changed to source_id = ', this.source_id);
   }
 
 }

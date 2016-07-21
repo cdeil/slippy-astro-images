@@ -2,10 +2,14 @@
   source-select works!
 </p>
 <p>
-    <select>
-        <option *ngFor="let source of sources" value="source.id">
+    <select (change)="onChange($event.target.value)">
+        <option *ngFor="let source of sources" value="{{source.id}}">
             {{source.name}}
         </option>
     </select>
   <!-- {{sources | json}} -->
+</p>
+
+<p>
+    Source ID = {{source_id}}
 </p>
