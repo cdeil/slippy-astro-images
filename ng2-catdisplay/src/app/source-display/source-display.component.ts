@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { CatalogService } from '../catalog.service';
 
 
@@ -10,7 +10,7 @@ import { CatalogService } from '../catalog.service';
   styleUrls: ['source-display.component.css']
 })
 export class SourceDisplayComponent implements OnInit {
-  active_source_id: number;
+  @Input() active_source_id: number;
   sources: any;
 
   constructor(catalogService: CatalogService) {

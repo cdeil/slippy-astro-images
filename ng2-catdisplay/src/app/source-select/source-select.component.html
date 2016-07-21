@@ -1,6 +1,4 @@
-<p>
-  source-select works!
-</p>
+<h1>This is the SourceSelectComponent</h1>
 <p>
     <select (change)="onChange($event.target.value)">
         <option *ngFor="let source of sources" value="{{source.id}}">
@@ -13,3 +11,7 @@
 <p>
     Source ID = {{source_id}}
 </p>
+
+<div>
+    <app-source-display [active_source_id]="source_id">Loading app-source-display ...</app-source-display>    
+</div>

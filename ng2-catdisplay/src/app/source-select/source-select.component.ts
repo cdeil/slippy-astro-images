@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../catalog.service';
+import { SourceDisplayComponent } from '../source-display';
 
 @Component({
   moduleId: module.id,
   selector: 'app-source-select',
   templateUrl: 'source-select.component.html',
   styleUrls: ['source-select.component.css'],
+  directives: [SourceDisplayComponent],
   providers: [CatalogService]
 })
 export class SourceSelectComponent implements OnInit {
