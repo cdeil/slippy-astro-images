@@ -6,10 +6,9 @@ export class CatalogService {
   constructor() { }
 
   getCatalog() {
-      return {
-          0: {name: 'Source 0'},
-          1: {name: 'Source 1'},
-      }
+    return [
+      { id: 0, name: 'Source 0' },
+      { id: 1, name: 'Source 1' }
+    ]
   }
-
 }
