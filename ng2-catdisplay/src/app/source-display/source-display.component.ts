@@ -17,7 +17,7 @@ export class SourceDisplayComponent implements OnInit {
       this.active_source_id = 1;
       this.sources = catalogService.getCatalog();
   }
-  
+
   ngOnInit() {
     //   active_source_id = 0;
   }
