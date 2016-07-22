@@ -14,8 +14,8 @@ export class SourceSelectComponent implements OnInit {
   sources: any;
   source_id: number;
 
-  constructor(catalogService: CatalogService) {   
-      this.sources = catalogService.getCatalog();
+  constructor(private catalogService: CatalogService) {
+      this.sources = this.catalogService.getCatalog();
       this.source_id = 0;
   }
 
