@@ -1,0 +1,22 @@
+{
+  "john": {
+    "name": "John Lennon",
+    "description": "Imagining all the people",
+    "deceased": true
+  },
+  "paul": {
+    "name": "Paul McCartney",
+    "description": "Believes in Yesterday",
+    "deceased": false
+  },
+  "george": {
+    "name": "George Harrison",
+    "description": "His guitar gently weeps",
+    "deceased": true
+  },
+  "ringo": {
+    "name": "Ringo Starr",
+    "description": "Going to put him in the movies",
+    "deceased": false
+  }
+}
