@@ -1,0 +1,22 @@
+{
+  "john": {
+    "name": "john",
+    "description": "Imagining all the people",
+    "deceased": true
+  },
+  "paul": {
+    "name": "paul",
+    "description": "Believes in Yesterday",
+    "deceased": false
+  },
+  "george": {
+    "name": "george",
+    "description": "His guitar gently weeps",
+    "deceased": true
+  },
+  "ringo": {
+    "name": "ringo",
+    "description": "Going to put him in the movies",
+    "deceased": false
+  }
+}
