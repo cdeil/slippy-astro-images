@@ -1,12 +1,17 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
+import { DashboardComponent } from './dashboard';
 import { Page1Component } from './page1';
 import { Page2Component } from './page2';
 
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: '/page1',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: 'page1',
