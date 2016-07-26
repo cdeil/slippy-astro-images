@@ -26,11 +26,11 @@ const routes: RouterConfig = [
         path: ''
       },
       {
-        path: '/source',
+        path: 'source',
         component: Page1SourceComponent
       },
       {
-        path: '/view',
+        path: 'view',
         component: Page1ViewComponent
       }
     ]
