@@ -19,5 +19,15 @@
   "files": [
     "main.ts",
     "typings.d.ts"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ],
+
+  "filesGlob" : [
+    "**/*.ts",
+    "**/*.tsx",
+    "!node_modules/**"
   ]
 }
