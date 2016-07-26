@@ -11,7 +11,7 @@ import {CatalogService} from './catalog.service';
   template: `
 	<h1>This is the JsonTestComponent</h1>
 	<select *ngIf="cat1">
-  	<option *ngFor='let source of cat1 | values:"key":true' value="{{source.name}}" >
+  	<option *ngFor='let source of cat1.asArray()' value="{{source.name}}" >
   	  {{source.name}}
   	</option>
 	</select>
@@ -38,8 +38,8 @@ import {CatalogService} from './catalog.service';
 export class JsonTestComponent implements OnInit {
   public cat1: Object;
   public cat2: Object;
-	public cat3: Object; 
-  public data: Object;
+	public cat3: Object;
+
 
   constructor(private catalogService: CatalogService) {
 
@@ -72,6 +72,7 @@ export class JsonTestComponent implements OnInit {
         this.cat1 = data[0]
         this.cat2 = data[1]
 				this.cat3 = data[2]
+
       }
     );
   }

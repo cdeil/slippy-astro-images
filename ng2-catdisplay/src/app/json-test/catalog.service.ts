@@ -6,14 +6,33 @@ import {Http} from '@angular/http';
 class TestCatalog {
   private data;
 
-  constructor(data) {
-
-    this.data = data
+  constructor(json) {
+    // can reformat json to data format we like here
+    this.data = json;
+    console.log(json);
+    /*this.swap(data);*/
+  }
+  // can add methods that present data in different ways
+  // to make components and templates simple
+  asArray() {
+    var res = [];
+    for(var key in this.data) {
+      res.push({label: key, name: this.data.key});
+    }
+    /*return [{name: 'aaa'}, {name: 'bbb'}]*/
+    console.log(res);
+    return res;
   }
 
-  /*getSource(idx) {
-    return
-  }*/
+  /*swap(json) {
+    /*var new_data = {};
+    for (var key in json) {
+      new_data[json[key]] = key;
+    }
+    return new_data;
+
+    }*/
+
 }
 
 
@@ -23,6 +42,8 @@ export class CatalogService {
   public cat2;
 
   public data;*/
+
+  /*public formatted_data: TestCatalog = new TestCatalog();*/
 
   constructor(private http: Http) {
     /*this.cat1 = http.get('/data/cat/test.json')
@@ -41,7 +62,8 @@ export class CatalogService {
   getAllData() {
     return Observable.forkJoin(
       this.http.get('/data/cat/test.json')
-        .map(response => response.json()),
+        .map(response => new TestCatalog(response.json())),
+        /*.map(response => response.json()),*/
 
       this.http.get('/data/cat/test2.json')
         .map(response => response.json()),
