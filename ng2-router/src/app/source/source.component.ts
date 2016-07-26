@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'source',
+  selector: 'app-source',
   templateUrl: 'source.component.html',
-  styleUrls: ['source.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  styleUrls: ['source.component.css']
 })
 export class SourceComponent implements OnInit {
 
