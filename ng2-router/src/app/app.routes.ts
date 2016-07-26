@@ -7,6 +7,8 @@ import { Page2Component } from './page2';
 
 import { Page1SourceComponent } from './page1/page1-source';
 import { Page1ViewComponent } from './page1/page1-view';
+import { Page2SourceComponent } from './page2/page2-source';
+import { Page2ViewComponent } from './page2/page2-view';
 
 const routes: RouterConfig = [
   {
@@ -34,10 +36,23 @@ const routes: RouterConfig = [
         component: Page1ViewComponent
       }
     ]
-},
+  },
   {
     path: 'page2',
-    component: Page2Component
+    component: Page2Component,
+    children: [
+      {
+        path: ''
+      },
+      {
+        path: 'source',
+        component: Page2SourceComponent
+      },
+      {
+        path: 'view',
+        component: Page2ViewComponent
+      }
+    ]
   }
 ];
 
