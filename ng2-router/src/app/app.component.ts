@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Page1Component } from './page1';
-import { Page2Component } from './page2';
+import { SourceComponent } from './source';
+import { ViewComponent } from './view';
+
 
 @Component({
   moduleId: module.id,
@@ -12,6 +13,6 @@ import { Page2Component } from './page2';
 })
 export class AppComponent {
 
-  
+
 
 }
