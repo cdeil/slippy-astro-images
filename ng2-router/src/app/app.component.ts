@@ -11,4 +11,7 @@ import { Page2Component } from './page2';
   directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
+
+  
+
 }
