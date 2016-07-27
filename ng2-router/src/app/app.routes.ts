@@ -10,30 +10,17 @@ const routes: RouterConfig = [
     redirectTo: '/select',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'source',
-  //   component: SourceComponent
-  // },
-  // {
-  //   path: 'view',
-  //   component: ViewComponent
-  // },
   {
     path: 'select',
-    component: SelectComponent,
-    children: [
-      {
-        path: ''
-      },
-      {
-        path: 'source',
-        component: SourceComponent
-      },
-      {
-        path: 'view',
-        component: ViewComponent
-      }
-    ]
+    component: SelectComponent
+  },
+  {
+    path: 'source',
+    component: SourceComponent
+  },
+  {
+    path: 'view',
+    component: ViewComponent
   }
 ];
 

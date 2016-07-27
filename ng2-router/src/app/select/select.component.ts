@@ -27,10 +27,12 @@ export class SelectComponent implements OnInit {
 
   onSourceChange(value) {
     this.selectedSource = value;
+    console.log("onSourceChange: ", this.selectedSource);
   }
 
   onViewChange(value) {
     this.selectedView = value;
+        console.log("onViewChange: ", this.selectedView);
   }
 
   constructor(private catalogService: CatalogService) { }
