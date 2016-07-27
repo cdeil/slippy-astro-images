@@ -8,8 +8,7 @@ import {SelectComponent} from './select';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  directives: [ROUTER_DIRECTIVES],
-  providers: [SelectComponent]
+  directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
 
