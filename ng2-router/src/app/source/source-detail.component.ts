@@ -9,12 +9,19 @@ import { Source } from '../data/source';
 })
 export class SourceDetailComponent implements OnInit {
 
+  public selectedSource;
+
+  onChange(value) {
+    this.selectedSource = value;
+  }
+
   @Input()
-  selection;
+  catalog;
 
   constructor() { }
 
   ngOnInit() {
+    this.selectedSource = 0;
   }
 
 }

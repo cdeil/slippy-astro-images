@@ -15,20 +15,14 @@ export class SourceComponent implements OnInit {
 
   public sources: Source[];
   public catalog;
-  public selectedSource;
 
   getCatalog() {
     this.catalog = this.catalogService.getCatalog();
   }
 
-  onChange(value) {
-    this.selectedSource = value;
-  }
-
   constructor(private catalogService: CatalogService) { }
 
   ngOnInit() {
-    this.selectedSource = 0;
     this.getCatalog();
   }
 
