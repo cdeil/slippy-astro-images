@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { SourceComponent } from './source';
-import { ViewComponent } from './view';
+import {SelectComponent} from './select';
 
 
 @Component({
@@ -9,7 +8,8 @@ import { ViewComponent } from './view';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  providers: [SelectComponent]
 })
 export class AppComponent {
 

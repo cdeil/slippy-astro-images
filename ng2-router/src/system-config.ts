@@ -45,6 +45,7 @@ const barrels: string[] = [
   'app/page2/page2-view',
   'app/source',
   'app/view',
+  'app/select',
   /** @cli-barrel */
 ];
 
