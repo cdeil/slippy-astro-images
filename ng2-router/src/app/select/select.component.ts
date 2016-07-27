@@ -19,13 +19,18 @@ export class SelectComponent implements OnInit {
   public sources: Source[];
   public catalog;
   public selectedSource;
+  public selectedView;
 
   getCatalog() {
     this.catalog = this.catalogService.getCatalog();
   }
 
-  onChange(value) {
+  onSourceChange(value) {
     this.selectedSource = value;
+  }
+
+  onViewChange(value) {
+    this.selectedView = value;
   }
 
   constructor(private catalogService: CatalogService) { }
@@ -33,6 +38,7 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
     this.getCatalog();
     this.selectedSource = 0;
+    this.selectedView = "text";
   }
 
 }
