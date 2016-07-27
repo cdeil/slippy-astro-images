@@ -1,13 +1,44 @@
-<h1>This is AppComponent</h1>
+<div>
 
-<nav>
-    <a [routerLink]="['/select']">Select Source</a>
+  <h1>This is AppComponent</h1>
+
+  <span style='padding:20px'>
+<select (change)='onSourceChange($event.target.value)'>
+  <option *ngFor='let source of catalog' value='{{source.id}}'>
+    {{source.name}}
+  </option>
+</select>
+</span>
+
+  <span>
+<select (change)='onViewChange($event.target.value)'>
+  <option value='text'>Text</option>
+  <option value='map'>Map</option>
+</select>
+</span>
+
+<br><br>
+
+
+  <nav>
+    <!-- <a [routerLink]="['/select']">Select Source</a> -->
     <a [routerLink]="['/source']">Source Info</a>
     <a [routerLink]="['/view']">View Source</a>
-</nav>
+  </nav>
+
+</div>
 
 <!-- <page1>Loading page1 ...</page1>
 <br>
 <page2>Loading page2 ...</page2> -->
 
 <router-outlet></router-outlet>
+
+
+
+
+
+<!-- TODO: Add dropdown that DYNAMICALLY routes based on your selection. Store this dropdown in the
+            app.component level, not the select.component level.
+            - Either read this article: http://blog.mgechev.com/2015/12/30/angular2-router-dynamic-route-config-definition-creation/
+            - Or use route.navigate() or whatever it is-->

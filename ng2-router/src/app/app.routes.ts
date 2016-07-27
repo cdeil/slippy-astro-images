@@ -1,19 +1,19 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 
-import {SelectComponent} from './select';
+// import {SelectComponent} from './select';
 import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: '/select',
+    redirectTo: '/source',
     pathMatch: 'full'
   },
-  {
-    path: 'select',
-    component: SelectComponent
-  },
+  // {
+  //   path: 'select',
+  //   component: SelectComponent
+  // },
   {
     path: 'source',
     component: SourceComponent
