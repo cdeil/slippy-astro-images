@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-// import { catalog } from '../data/catalog';
+import { Source } from '../data/source';
+import { SourceDetailComponent } from './source-detail.component';
 
 @Component({
   moduleId: module.id,
   selector: 'app-source',
   templateUrl: 'source.component.html',
-  styleUrls: ['source.component.css']
+  styleUrls: ['source.component.css'],
+  directives: [SourceDetailComponent]
 })
 export class SourceComponent implements OnInit {
 
@@ -22,13 +24,6 @@ export class SourceComponent implements OnInit {
     this.selectedSource = 0;
   }
 
-}
-
-export class Source {
-  id: number;
-  name: string;
-  ra: number;
-  dec: number;
 }
 
 const CATALOG: Source[] = [

@@ -1,6 +1,8 @@
-<p>
-  Select a source below.
-</p>
+<h3>Source Info:</h3>
+
+<source-detail [selection]='catalog[selectedSource]'></source-detail>
+
+<!-- <p>Select a source below.</p>
 
 <select (change)='onChange($event.target.value)'>
   <option *ngFor='let source of catalog' value='{{source.id}}'>
@@ -8,7 +10,7 @@
   </option>
 </select>
 
-<p>You selected: {{catalog[selectedSource].name}}</p>
+<p>You selected: {{catalog[selectedSource].name}}</p> -->
 
 <!-- <nav>
     <a [routerLink]="['./source']">Page1 Source</a>
