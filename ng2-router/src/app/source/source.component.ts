@@ -11,6 +11,10 @@ export class SourceComponent implements OnInit {
 
   public catalog = CATALOG;
 
+  onChange(value) {
+    console.log(value);
+  }
+
   constructor() { }
 
   ngOnInit() {
