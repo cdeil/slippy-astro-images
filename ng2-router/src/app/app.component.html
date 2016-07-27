@@ -22,8 +22,9 @@
 
   <nav>
     <!-- <a [routerLink]="['/select']">Select Source</a> -->
-    <a [routerLink]="['/source']">Source Info</a>
+    <!-- <a [routerLink]="['/source']">Source Info</a> -->
     <a [routerLink]="['/view']">View Source</a>
+    <a [routerLink]="route()">ROUTE</a>
   </nav>
 
 </div>
@@ -42,3 +43,5 @@
             app.component level, not the select.component level.
             - Either read this article: http://blog.mgechev.com/2015/12/30/angular2-router-dynamic-route-config-definition-creation/
             - Or use route.navigate() or whatever it is-->
+
+            <!--  On ngDoCheck, run a function that sets the route to appropriate selection -->
