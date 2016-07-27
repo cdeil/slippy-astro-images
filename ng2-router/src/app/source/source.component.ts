@@ -10,14 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class SourceComponent implements OnInit {
 
   public catalog = CATALOG;
+  public selectedSource;
 
   onChange(value) {
-    console.log(value);
+    this.selectedSource = value;
   }
 
   constructor() { }
 
   ngOnInit() {
+    this.selectedSource = 0;
   }
 
 }
