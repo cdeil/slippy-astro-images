@@ -1,6 +1,12 @@
 <p>
-  source works!
+  Select a source below.
 </p>
+
+<select>
+  <option *ngFor='let source of catalog' value='{{source.id}}'>
+    {{source.name}}
+  </option>
+</select>
 
 <!-- <nav>
     <a [routerLink]="['./source']">Page1 Source</a>
