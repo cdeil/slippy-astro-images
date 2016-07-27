@@ -1,8 +1,8 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 
-import {SelectComponent} from './select';
-import {SourceComponent} from './source';
-import {ViewComponent} from './view';
+import { AppComponent } from './app.component';
+import { SelectComponent } from './select';
+import {SourceDetailComponent} from './source/source-detail.component';
 
 const routes: RouterConfig = [
   {
@@ -10,30 +10,9 @@ const routes: RouterConfig = [
     redirectTo: '/select',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'source',
-  //   component: SourceComponent
-  // },
-  // {
-  //   path: 'view',
-  //   component: ViewComponent
-  // },
   {
     path: 'select',
     component: SelectComponent,
-    children: [
-      {
-        path: ''
-      },
-      {
-        path: 'source',
-        component: SourceComponent
-      },
-      {
-        path: 'view',
-        component: ViewComponent
-      }
-    ]
   }
 ];
 

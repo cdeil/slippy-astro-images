@@ -1,19 +1,4 @@
-<h1>This is AppComponent</h1>
-
-<select (change)='onSourceSelectChange($event.target.value)'>
-  <option *ngFor='let source of catalog' value='{{source.id}}'>
-    {{source.name}}
-  </option>
-</select>
-<br><br>
-
-<select (change)='onViewSelectChange($event.target.value)'>
-  <option value='text'>Text</option>
-  <option value='map'>Map</option>
-</select>
-
-<p>
-    TODO: let user select view component.
-</p>
-
-<router-outlet></router-outlet>
+<div class="box">
+    <h1>This is AppComponent</h1>
+    <app-select></app-select>
+</div>

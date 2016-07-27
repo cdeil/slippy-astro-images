@@ -1,16 +1,22 @@
-<h3>Select source from the dropdown below.</h3>
+<div class='box'>
+<h1>This is SelectComponent</h1>
 
-<select (change)='onChange($event.target.value)'>
+<select (change)='onSourceSelectChange($event.target.value)'>
   <option *ngFor='let source of catalog' value='{{source.id}}'>
     {{source.name}}
   </option>
 </select>
 <br><br>
 
+<select (change)='onViewSelectChange($event.target.value)'>
+  <option value='text'>Text</option>
+  <option value='map'>Map</option>
+</select>
 
-<nav>
-  <a [routerLink]="['./source']">Source Info</a>
-  <a [routerLink]="['./view']">View Source</a>
-</nav>
+<p>
+    TODO: let user select view component.
+</p>
+</div>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet>Should load view or map here ...</router-outlet> -->
+<!-- <source-detail>Loading source detail...</source-detail> -->
