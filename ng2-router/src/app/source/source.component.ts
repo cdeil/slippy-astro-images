@@ -36,7 +36,7 @@ export class SourceComponent implements OnInit {
   public catalog;
   source: Source;
   private sub: any;
-  public id = 0;
+  public id;
 
   getCatalog() {
         // this.catalog = this.catalogService.getCatalog();
@@ -55,6 +55,7 @@ export class SourceComponent implements OnInit {
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       let id = +params['id']; // (+) converts string 'id' to a number
+      this.id = id;
       this.catalogService.getSource(id).then(source => this.source = source);
     });
 

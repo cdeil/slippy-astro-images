@@ -17,7 +17,6 @@ const routes: RouterConfig = [
   // },
   {
     path: 'source/:id',
-    // path: 'source',
     component: SourceComponent
   },
   {
