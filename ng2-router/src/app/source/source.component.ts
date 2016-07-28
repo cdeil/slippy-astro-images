@@ -28,7 +28,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 // }
 
 
-export class SourceComponent implements OnInit {
+export class SourceComponent implements OnInit, OnDestroy {
 
   // public sources: Source[];
   public catalog;
