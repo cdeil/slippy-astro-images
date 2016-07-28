@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Source } from '../data/source';
-import { SourceDetailComponent } from './source-detail.component';
 import { CatalogService } from '../data/catalog.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -9,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-source',
   templateUrl: 'source.component.html',
   styleUrls: ['source.component.css'],
-  directives: [SourceDetailComponent],
   providers: [CatalogService]
 })
 // export class SourceComponent implements OnInit {

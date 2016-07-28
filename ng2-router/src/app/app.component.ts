@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   onSourceChange(value) {
     this.selectedSource = value;
 
-    this.router.navigate(['/source', value]);
+    this.router.navigate([this.selectedView, value]);
 
     console.log("onSourceChange: ", this.selectedSource);
   }
@@ -57,15 +57,17 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   ngOnInit() {
     // this.getCatalog();
     this.selectedSource = 0;
-    this.selectedView = "text";
+    this.selectedView = "source";
     this.routerLink = '/';
+
+    this.catalogService.getCatalog()
+      .then(sources => this.sources = sources);
 
     this.sub = this.activatedRoute
       .params
       .subscribe(params => {
         this.selectedSource = +params['id'];
-        this.catalogService.getCatalog()
-          .then(sources => this.sources = sources);
+
       });
 
   }

@@ -5,24 +5,34 @@ import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 
 const routes: RouterConfig = [
-  {
-    path: '',
-    redirectTo:'/view',
-    // redirectTo: '/source',
-    pathMatch: 'full'
-  },
   // {
   //   path: 'select',
   //   component: SelectComponent
   // },
+
   {
     path: 'source/:id',
     component: SourceComponent
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: ViewComponent
-  }
+  },
+  {
+    path: 'source',
+    redirectTo: '/source/0',
+    pathMatch: 'full'
+  },
+  {
+    path: 'view',
+    redirectTo: '/view/0',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo:'/source/0',
+    pathMatch: 'full'
+  },
 ];
 
 
