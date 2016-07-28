@@ -12,6 +12,10 @@ export class CatalogService {
     return sourcesPromise;
   }
 
+  getCATALOG() {
+    return CATALOG;
+  }
+
   getSource(id: number | string) {
     return sourcesPromise
       .then(sources => sources.find(source => source.id === +id));

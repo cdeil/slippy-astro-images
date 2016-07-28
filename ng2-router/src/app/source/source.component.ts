@@ -33,9 +33,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SourceComponent implements OnInit {
 
   // public sources: Source[];
-  // public catalog;
+  public catalog;
   source: Source;
   private sub: any;
+  public id = 0;
+
+  getCatalog() {
+        // this.catalog = this.catalogService.getCatalog();
+        this.catalog = this.catalogService.getCATALOG();
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,6 +50,8 @@ export class SourceComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.getCatalog();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       let id = +params['id']; // (+) converts string 'id' to a number
