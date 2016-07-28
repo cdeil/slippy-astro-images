@@ -8,7 +8,6 @@ let sourcesPromise = Promise.resolve(CATALOG);
 export class CatalogService {
 
   getCatalog() {
-    // return CATALOG;
     return sourcesPromise;
   }
 

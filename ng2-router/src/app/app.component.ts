@@ -16,15 +16,15 @@ import {Source} from './data/source';
 export class AppComponent implements OnInit, OnDestroy, DoCheck {
 
   public sources: Source[];
-  public catalog;
+  // public catalog;
   public selectedSource;
   public selectedView;
   public routerLink;
   private sub: any;
 
-  getCatalog() {
-    this.catalog = this.catalogService.getCatalog();
-  }
+  // getCatalog() {
+  //   this.catalog = this.catalogService.getCatalog();
+  // }
 
   onSourceChange(value) {
     this.selectedSource = value;
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   ) { }
 
   ngOnInit() {
-    this.getCatalog();
+    // this.getCatalog();
     this.selectedSource = 0;
     this.selectedView = "text";
     this.routerLink = '/';
