@@ -7,7 +7,8 @@ import {ViewComponent} from './view';
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: '/source',
+    redirectTo:'/view',
+    // redirectTo: '/source',
     pathMatch: 'full'
   },
   // {
@@ -15,7 +16,8 @@ const routes: RouterConfig = [
   //   component: SelectComponent
   // },
   {
-    path: 'source',
+    path: 'source/:id',
+    // path: 'source',
     component: SourceComponent
   },
   {
