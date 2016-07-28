@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 import {CatalogService} from './data/catalog.service';
@@ -34,25 +34,21 @@ export class AppComponent implements OnInit, DoCheck {
   onViewChange(value) {
     this.selectedView = value;
 
-    if(this.selectedView == "text") {
-      this.routerLink = "/source";
-    }
-    else if(this.selectedView == "map") {
-      this.routerLink = "/view";
-    }
-    else {
-      console.log("error");
-      this.routerLink = "/";
-    }
+    this.router.navigate(["/", value]);
+
+    // this.routerLink = "/", this.selectedView;
 
     console.log("onViewChange: ", this.selectedView);
   }
 
-  route() {
-    return this.routerLink;
-  }
+  // route() {
+  //   return this.routerLink;
+  // }
 
-  constructor(private catalogService: CatalogService) { }
+  constructor(
+    private catalogService: CatalogService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getCatalog();
