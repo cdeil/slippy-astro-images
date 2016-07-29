@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck, AfterViewChecked } from '@angular/core';
 import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from '@angular/router';
 import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 import {CatalogService} from './data/catalog.service';
 import {Source} from './data/source';
+
+declare var $: any;
 
 @Component({
   moduleId: module.id,
@@ -13,7 +15,7 @@ import {Source} from './data/source';
   directives: [ROUTER_DIRECTIVES],
   providers: [CatalogService]
 })
-export class AppComponent implements OnInit, OnDestroy, DoCheck {
+export class AppComponent implements OnInit, OnDestroy, DoCheck, AfterViewChecked {
 
   public sources: Source[];
   // public catalog;
@@ -42,14 +44,8 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
 
     this.router.navigate(["/", value, '/', this.selectedSource]);
 
-    // this.routerLink = "/", this.selectedView;
-
     console.log("onViewChange: ", this.selectedView);
   }
-
-  // route() {
-  //   return this.routerLink;
-  // }
 
   constructor(
     private catalogService: CatalogService,
@@ -60,7 +56,6 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
   ngOnInit() {
     // this.getCatalog();
     this.selectedView = "source";
-    // this.routerLink = '/';
 
     this.catalogService.getCatalog()
       .then(sources => this.sources = sources);
@@ -73,8 +68,16 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck {
 
       });
 
-    this.selectedSource = 0;
+    this.selectedSource = 0;  //TODO: We need this to be set to whatever the id of the url is. For some reason selectedSource returns 'null' in the console.log above...
     console.log('after subscribe: selectedSource= ', this.selectedSource);
+
+
+  }
+
+  ngAfterViewChecked() {
+
+    $('option[value="' + this.selectedSource + '"]').attr('selected', 'selected');
+    console.log($('option[value="' + this.selectedSource + '"]'));
 
   }
 

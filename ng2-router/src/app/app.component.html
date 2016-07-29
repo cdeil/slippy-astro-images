@@ -3,19 +3,19 @@
   <h1>This is AppComponent</h1>
 
   <span style='padding:20px'>
-<select (change)='onSourceChange($event.target.value)'>
+<select id='source-select' (change)='onSourceChange($event.target.value)'>
   <option *ngFor='let source of sources' value='{{source.id}}'>
     {{source.name}}
   </option>
 </select>
 </span>
 
-  <span>
-<select (change)='onViewChange($event.target.value)'>
+  <!-- <span>
+<select id='view-select' (change)='onViewChange($event.target.value)'>
   <option value='source'>Source</option>
   <option value='view'>View</option>
 </select>
-</span>
+</span> -->
 
 <br><br>
 
