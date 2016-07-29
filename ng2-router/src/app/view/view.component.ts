@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Source } from '../data/source';
 import { CatalogService } from '../data/catalog.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ declare var $: any;
   styleUrls: ['view.component.css'],
   providers: [CatalogService]
 })
-export class ViewComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
+export class ViewComponent implements OnInit, OnDestroy {
 
   // public sources: Source[];
   public catalog;
@@ -43,39 +43,35 @@ export class ViewComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private catalogService: CatalogService
-  ) { }
+  ) {}
 
   ngOnInit() {
 
-
-
     this.getCatalog();
 
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      let id = +params['id']; // (+) converts string 'id' to a number
-      this.id = id;
-      this.catalogService.getSource(id).then(source => this.source = source);
-    });
+    console.log('ViewComponent ngOnInit()');
 
     this.aladin = A.aladin('#aladin-lite-div', {
       survey: "P/DSS2/color",
       fov: 60,
-      target: (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString()
+      target: "0 +0"
+      // target: (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString()
     });
 
-    console.log("aladin-lite-div initial position: ", (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString());
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      let id = +params['id']; // (+) converts string 'id' to a number
+      this.catalogService.getSource(id).then(source => this.source = source);
+
+      this.id = id;
+
+      this.aladin.gotoRaDec(( this.catalog[this.id].ra ), ( this.catalog[this.id].dec ));
+      console.log("aladin-lite-div position: ", (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString());
+    });
+
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  ngDoCheck() {
-    this.plusminus();
-  }
-
-  ngOnChanges(changes: {[propName: number]: SimpleChange}) {
-    console.log('ngOnChanges = ', changes['this.id']);
   }
 
 }
