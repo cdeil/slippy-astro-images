@@ -39,7 +39,7 @@ export class ViewComponent implements OnInit, OnDestroy {
 
     this.getCatalog();
 
-    console.log('ViewComponent ngOnInit()');
+    // console.log('ViewComponent ngOnInit()');
 
     this.aladin = A.aladin('#aladin-lite-div', {
       survey: "P/DSS2/color",
