@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck, OnChanges, SimpleChange } from '@angular/core';
 import { Source } from '../data/source';
 import { CatalogService } from '../data/catalog.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,8 +13,7 @@ declare var $: any;
   styleUrls: ['view.component.css'],
   providers: [CatalogService]
 })
-export class ViewComponent implements OnInit, OnDestroy, DoCheck {
-
+export class ViewComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
 
   // public sources: Source[];
   public catalog;
@@ -64,8 +63,7 @@ export class ViewComponent implements OnInit, OnDestroy, DoCheck {
       target: (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString()
     });
 
-    console.log((this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString());
-
+    console.log("aladin-lite-div initial position: ", (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString());
   }
 
   ngOnDestroy() {
@@ -74,6 +72,10 @@ export class ViewComponent implements OnInit, OnDestroy, DoCheck {
 
   ngDoCheck() {
     this.plusminus();
+  }
+
+  ngOnChanges(changes: {[propName: number]: SimpleChange}) {
+    console.log('ngOnChanges = ', changes['this.id']);
   }
 
 }
