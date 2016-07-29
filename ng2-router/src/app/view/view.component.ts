@@ -24,16 +24,6 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   public aladin;
 
-  plusminus() {
-    if((this.catalog[this.id].dec) < 0) {
-      return "-";
-    }
-    else {
-      return "";
-    }
-  }
-
-
   getCatalog() {
     // this.catalog = this.catalogService.getCatalog();
     this.catalog = this.catalogService.getCATALOG();
@@ -55,7 +45,7 @@ export class ViewComponent implements OnInit, OnDestroy {
       survey: "P/DSS2/color",
       fov: 60,
       target: "0 +0"
-      // target: (this.catalog[this.id].ra).toString() + " " + this.plusminus() + (this.catalog[this.id].dec).toString()
+      // target: (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString()
     });
 
     this.sub = this.activatedRoute.params.subscribe(params => {
