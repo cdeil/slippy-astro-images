@@ -72,13 +72,13 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     //
     //   });
 
-      this.url = window.location.toString().split('/');
-      this.selectedSource = this.url[this.url.length - 1];
-      this.selectedView = this.url[this.url.length - 2];
-
   }
 
   ngAfterViewChecked() {
+
+    this.url = window.location.toString().split('/');
+    this.selectedSource = this.url[this.url.length - 1];
+    this.selectedView = this.url[this.url.length - 2];
 
     $('#source-select option[value="' + this.selectedSource + '"]').attr('selected', 'selected');
     $('#view-select option[value="' + this.selectedView + '"]').attr('selected', 'selected');

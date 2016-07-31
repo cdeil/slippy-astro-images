@@ -42,7 +42,7 @@ export class ViewComponent implements OnInit, OnDestroy {
     // console.log('ViewComponent ngOnInit()');
 
     this.aladin = A.aladin('#aladin-lite-div', {
-      survey: "P/DSS2/color",
+      survey: "P/Fermi/color",
       fov: 60,
       target: "0 +0"
       // target: (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString()
