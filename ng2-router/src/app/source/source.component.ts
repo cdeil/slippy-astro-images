@@ -54,6 +54,7 @@ export class SourceComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       let id = +params['id']; // (+) converts string 'id' to a number
       this.id = id;
+      console.log(this.id)
       this.catalogService.getSource(id).then(source => this.source = source);
     });
 

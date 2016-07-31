@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, DoCheck, AfterViewChecked } from '@angular/core';
-import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from '@angular/router';
+import {ROUTER_DIRECTIVES, Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET} from '@angular/router';
 import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 import {CatalogService} from './data/catalog.service';
@@ -18,11 +18,14 @@ declare var $: any;
 export class AppComponent implements OnInit, OnDestroy, DoCheck, AfterViewChecked {
 
   public sources: Source[];
+  // public source: Source;
+
   // public catalog;
   public selectedSource;
   public selectedView;
-  public routerLink;
-  private sub: any;
+  // private sub: any;
+  // private sub2: any;
+  public url;
 
   // getCatalog() {
   //   this.catalog = this.catalogService.getCatalog();
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck, AfterViewChecke
     this.router.navigate([this.selectedView, value]);
 
     console.log("onSourceChange: ", this.selectedSource);
+
   }
 
   onViewChange(value) {
@@ -55,41 +59,65 @@ export class AppComponent implements OnInit, OnDestroy, DoCheck, AfterViewChecke
 
   ngOnInit() {
     // this.getCatalog();
-    this.selectedView = "source";
 
     this.catalogService.getCatalog()
       .then(sources => this.sources = sources);
 
-    this.sub = this.activatedRoute
-      .params
-      .subscribe(params => {
-        this.selectedSource = +params['id'];
-        console.log('in subscribe: selectedSource= ', this.selectedSource);
+    console.log("sources: ", this.catalogService.getCatalog().then(sources => sources));
 
-      });
+    // this.sub = this.activatedRoute
+    //   .params
+    //   .subscribe(params => {
+    //     this.selectedSource = +params['id'];
+    //     console.log('in subscribe: selectedSource= ', this.selectedSource);
+    //     console.log(params['id']);
+    //
+    //   });
 
-    this.selectedSource = 0;  //TODO: We need this to be set to whatever the id of the url is. For some reason selectedSource returns 'null' in the console.log above...
-    console.log('after subscribe: selectedSource= ', this.selectedSource);
+      this.url = window.location.toString().split('/');
+      this.selectedSource = this.url[this.url.length - 1];
+      this.selectedView = this.url[this.url.length - 2];
 
+    // this.sub2 = this.router.events.subscribe((event) => {
+    //   console.log(this.router.url);
+    // });
+
+
+    // this.sub2 = this.router.events
+    //   // .filter(event => event instancecof NavigationEnd)
+    //   .map(_ => this.router.routerState)
+    //   .map(state => {
+    //     let route = this.activatedRoute;
+    //     while(state.firstChild(route)) {
+    //       route = state.firstChild(route);
+    //     }
+    //     return route;
+    //   })
+    //   // .filter(route => route.outlet === PRIMARY_OUTLET)
+    //   .mergeMap(route => route.data)
+    //   .subscribe(data => {
+    //     console.log(data['id'])
+    //   });
 
   }
 
   ngAfterViewChecked() {
 
-    $('option[value="' + this.selectedSource + '"]').attr('selected', 'selected');
-    console.log($('option[value="' + this.selectedSource + '"]'));
+    $('#source-select option[value="' + this.selectedSource + '"]').attr('selected', 'selected');
+    $('#view-select option[value="' + this.selectedView + '"]').attr('selected', 'selected');
 
   }
 
   ngOnDestroy() {
 
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
+    // this.sub2.unsubscribe();
 
   }
 
   ngDoCheck() {
     // this.route(this.selectedSource);
-  }
+    }
 
 
 }
