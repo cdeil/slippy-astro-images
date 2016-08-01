@@ -85,6 +85,7 @@ console.log("console.log");
           this.aladin.gotoRaDec(( this.catalog[this.id].RAJ2000 ), ( this.catalog[this.id].DEJ2000 ));
           // Because the ABOVE LINE MUST be called while this.catalog is being subscribed, we cannot call this.paramsService.getCatalog().
           // Instead we are stuck with this messy subscribe within a subscribe.
+          // Perhaps this can be cleaner with a Promise.resolve in the service, and a .then() to call the aladin.gotoRaDec()?
           console.log("aladin-lite-div position: ", (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString());
         },
         err => console.error(err),
