@@ -23,6 +23,8 @@
 
 <h3>This is SourceComponent</h3>
 
-<p>You selected: {{catalog[id].name}}</p>
-<p>RA: {{catalog[id].ra}}</p>
-<p>DEC: {{catalog[id].dec}}</p>
+<div *ngIf="catalog"> <!-- You need this so that below only shows once the subscribe runs and defines catalog. -->
+<p>You selected: {{catalog[id].Source_Name}}</p>
+<p>RA: {{catalog[id].RAJ2000}}</p>
+<p>DEC: {{catalog[id].DEJ2000}}</p>
+</div>

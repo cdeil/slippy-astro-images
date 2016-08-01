@@ -4,6 +4,7 @@ import {SourceComponent} from './source';
 import {ViewComponent} from './view';
 import {CatalogService} from './data/catalog.service';
 import {Source} from './data/source';
+import {ParamsService} from './params.service';
 
 declare var $: any;
 
@@ -13,21 +14,30 @@ declare var $: any;
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [CatalogService]
+  providers: [CatalogService, ParamsService]
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   public sources: Source[];
 
-  // public catalog;
+  public catalog;
   public selectedSource;
   public selectedView;
   // private sub: any;
   public url;
 
-  // getCatalog() {
-  //   this.catalog = this.catalogService.getCatalog();
-  // }
+  getCatalog() {
+    this.catalogService.getData().subscribe(
+      data => {
+        console.log(data);
+        this.catalog = data;
+        this.paramsService.setCatalog(data);
+      },
+      err => console.error(err),
+      () => console.log('working!')
+    );
+
+  }
 
   onSourceChange(value) {
 
@@ -52,14 +62,18 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   constructor(
     private catalogService: CatalogService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public paramsService: ParamsService
   ) { }
 
   ngOnInit() {
-    // this.getCatalog();
+    this.getCatalog();
 
-    this.catalogService.getCatalog()
-      .then(sources => this.sources = sources);
+    // this.catalogService.getCatalog()
+    //   .then(sources => {
+    //     this.sources = sources;
+    //     console.log(this.sources);
+    //   });
 
     // this.sub = this.activatedRoute
     //   .params
@@ -72,16 +86,29 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     //
     //   });
 
+    this.selectedView = 'view'; //Temporary
+
   }
+
 
   ngAfterViewChecked() {
 
-    this.url = window.location.toString().split('/');
-    this.selectedSource = this.url[this.url.length - 1];
-    this.selectedView = this.url[this.url.length - 2];
+    // this.url = window.location.toString().split('/');
+    // this.url = this.router.url.split('/');
+    // this.selectedSource = this.url[this.url.length - 1];
+    // this.selectedView = this.url[this.url.length - 2];
+    //
+    // console.log('paramsService source: ', this.paramsService.getSourceParam());
+    // console.log('paramsService view: ', this.paramsService.getViewParam());
+
+    this.selectedSource = this.paramsService.getSourceParam();
+    // this.selectedView = this.paramsService.getViewParam();
+
 
     $('#source-select option[value="' + this.selectedSource + '"]').attr('selected', 'selected');
     $('#view-select option[value="' + this.selectedView + '"]').attr('selected', 'selected');
+
+      // console.log("url: ", this.router.url);
 
   }
 

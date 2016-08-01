@@ -2,11 +2,19 @@
 
   <h1>This is AppComponent</h1>
 
-  <span style='padding:20px'>
+  <!-- <span style='padding:20px'>
 <select id='source-select' (change)='onSourceChange($event.target.value)'>
   <option *ngFor='let source of sources' value='{{source.id}}'>
     {{source.name}}
   </option>
+</select>
+</span> -->
+
+<span style='padding:20px'>
+<select id='source-select' (change)='onSourceChange($event.target.value)'>
+<option *ngFor='let source of catalog' value='{{source.id}}'>
+  {{source.Source_Name}}
+</option>
 </select>
 </span>
 
