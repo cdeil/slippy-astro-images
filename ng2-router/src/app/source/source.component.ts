@@ -22,16 +22,16 @@ export class SourceComponent implements OnInit, OnDestroy {
   private sub: any;
   public id;
 
-  getCatalog() {
-    this.catalogService.getData().subscribe(
-      data => {
-        this.catalog = data;
-      },
-      err => console.error(err),
-      () => console.log('working!')
-    );
-
-  }
+  // getCatalog() {
+  //   this.catalogService.getData().subscribe(
+  //     data => {
+  //       this.catalog = data;
+  //     },
+  //     err => console.error(err),
+  //     () => console.log('working!')
+  //   );
+  //
+  // }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,7 +42,7 @@ export class SourceComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.getCatalog();
+    this.catalog = this.paramsService.getCatalog();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
       let id = +params['id']; // (+) converts string 'id' to a number
