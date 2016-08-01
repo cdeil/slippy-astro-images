@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 
 
 class TestCatalog {
@@ -56,6 +56,25 @@ export class CatalogService {
       'cat1': this.cat1,
       'cat2': this.cat2
     }*/
+
+  }
+
+  reformat(obj) {
+    var res;
+
+    Object.keys(obj).forEach(k => {
+      Object.keys(obj[k]).forEach(v => {
+        (res[v] = (res[v] || { id: v }))[k] = obj[k][v];
+      });
+    });
+
+    return res;
+  }
+
+  getData() { // Once this is working, change name to getCatalog or getCATALOG
+
+    return this.http.get('/data/cat/cat_2fhl.json')
+      .map((res: Response) => res.json());
 
   }
 

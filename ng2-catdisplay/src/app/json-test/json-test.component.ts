@@ -27,6 +27,12 @@ import {CatalogService} from './catalog.service';
 			{{source.name}}
 		</option>
 	</select>
+
+  <select *ngIf="cat2fhl">
+    <option *ngFor='let source of cat2fhl | values:"key":true' value="{{source}}" >
+      {{source["0"]}}
+    </option>
+  </select>
 	`,
   // templateUrl: 'json-test.component.html',
   pipes: [TestPipe],
@@ -39,6 +45,8 @@ export class JsonTestComponent implements OnInit {
   public cat1: Object;
   public cat2: Object;
 	public cat3: Object;
+
+  public cat2fhl: Object;
 
 
   constructor(private catalogService: CatalogService) {
@@ -64,6 +72,7 @@ export class JsonTestComponent implements OnInit {
 
   ngOnInit() {
 		this.getAllData();
+    this.getData();
 	}
 
   getAllData() {
@@ -74,6 +83,14 @@ export class JsonTestComponent implements OnInit {
 				this.cat3 = data[2]
 
       }
+    );
+  }
+
+  getData() {
+    this.catalogService.getData().subscribe(
+      data => {this.cat2fhl = data},
+      err => console.error(err),
+      () => console.log("working!")
     );
   }
 
