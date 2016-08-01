@@ -21,27 +21,27 @@ export class ViewComponent implements OnInit, OnDestroy {
   public catalog;
   source: Source;
   private sub: any;
+  private sub2: any;
   public id;
 
 
   public aladin;
 
-  getCatalog() {
-    // this.catalog = this.catalogService.getCatalog();
-    this.catalog = this.catalogService.getCATALOG();
-  }
-
-  // getData() {
+  // getCatalog() {
   //   this.catalogService.getData().subscribe(
   //     data => {
+  //       console.log(data);
+  //       // this.catalog = JSON.parse(data);
   //       this.catalog = data;
-  //       console.log(this.catalog);
+  //       console.log('this.catalog ', typeof this.catalog);
+  //       this.paramsService.setCatalog(data);
   //     },
   //     err => console.error(err),
   //     () => console.log('working!')
   //   );
   //
   // }
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -52,8 +52,14 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.getCatalog();
-    // this.catalog = this.paramsService.getCatalog();;
+console.log("console.log");
+
+    // this.getCatalog();
+    // this.getData();
+
+
+
+    // this.catalog = this.paramsService.getCatalog();
 
     // console.log('ViewComponent ngOnInit()');
 
@@ -64,15 +70,27 @@ export class ViewComponent implements OnInit, OnDestroy {
       // target: (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString()
     });
 
+
     this.sub = this.activatedRoute.params.subscribe(params => {
       let id = +params['id']; // (+) converts string 'id' to a number
-      // this.catalogService.getSource(id).then(source => this.source = source);
 
       this.id = id;
       this.paramsService.setSourceParam(this.id);
 
-      this.aladin.gotoRaDec(( this.catalog[this.id].ra ), ( this.catalog[this.id].dec ));
-      console.log("aladin-lite-div position: ", (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString());
+      this.catalogService.getData().subscribe(
+        data => {
+          this.catalog = data;
+          console.log(this.catalog);
+
+          this.aladin.gotoRaDec(( this.catalog[this.id].RAJ2000 ), ( this.catalog[this.id].DEJ2000 ));
+          // Because the ABOVE LINE MUST be called while this.catalog is being subscribed, we cannot call this.paramsService.getCatalog().
+          // Instead we are stuck with this messy subscribe within a subscribe.
+          console.log("aladin-lite-div position: ", (this.catalog[this.id].ra).toString() + " " + (this.catalog[this.id].dec).toString());
+        },
+        err => console.error(err),
+        () => console.log('working!')
+      );
+
     });
 
   }

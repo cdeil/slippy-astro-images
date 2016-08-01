@@ -52,7 +52,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   onViewChange(value) {
+
+    if(value !== null) {
     this.selectedView = value;
+  }
 
     this.router.navigate(["/", value, '/', this.selectedSource]);
 
