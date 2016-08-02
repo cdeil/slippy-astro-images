@@ -89,7 +89,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     //
     //   });
 
-    this.selectedView = 'view'; //Temporary
+    // this.selectedView = 'view'; //Temporary
 
   }
 
@@ -100,12 +100,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewChecked {
     // this.url = this.router.url.split('/');
     // this.selectedSource = this.url[this.url.length - 1];
     // this.selectedView = this.url[this.url.length - 2];
-    //
-    // console.log('paramsService source: ', this.paramsService.getSourceParam());
-    // console.log('paramsService view: ', this.paramsService.getViewParam());
+
 
     this.selectedSource = this.paramsService.getSourceParam();
-    // this.selectedView = this.paramsService.getViewParam();
+    this.selectedView = this.paramsService.getViewParam();
 
 
     $('#source-select option[value="' + this.selectedSource + '"]').attr('selected', 'selected');

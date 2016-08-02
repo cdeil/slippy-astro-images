@@ -52,7 +52,7 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-console.log("console.log");
+    this.paramsService.setViewParam('view');
 
     // this.getCatalog();
     // this.getData();

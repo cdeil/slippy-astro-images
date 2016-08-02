@@ -42,6 +42,8 @@ export class SourceComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.paramsService.setViewParam('source');
+
     this.catalog = this.paramsService.getCatalog();
 
     this.sub = this.activatedRoute.params.subscribe(params => {
